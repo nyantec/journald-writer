@@ -1,0 +1,8 @@
+cursor_file: "/tmp/journald-export/cursor"
+log_writer_config:
+  target_dir: "/var/log/journal-export"
+  prefix: "journal-"
+  suffix: ".log"
+  min_avail_of_total: 0.05
+  warn_if_avail_reached: false
+  max_file_size: 536870912
