@@ -1,9 +1,10 @@
 [package]
 name = "journald-writer"
 version = "0.1.0"
+repository = "https://github.com/nyantec/rust-journald"
 authors = ["The journald-writer Authors <oss@nyantec.com>"]
 edition = "2018"
-license = "MirOS"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
