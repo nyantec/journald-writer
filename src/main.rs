@@ -102,7 +102,7 @@ pub fn run(config: Config) -> Result<()> {
 	drop(path);
 
 	let mut reader = open_reader(&config.cursor_file)?;
-	let mut iter = reader.to_blocking_iter();
+	let mut iter = reader.as_blocking_iter();
 
 	// This iter is blocking. There as this is blocking for loop.
 	// This can mean that an exit request takes until the next log line is read

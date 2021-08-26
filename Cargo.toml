@@ -18,5 +18,4 @@ serde = { version = "1.0", features = [ "derive" ] }
 getopts = "0.2"
 
 log-writer = { version = "0.3", features = [ "serde" ] }
-journald = { path = "../rust-journald" }
-#journald = { git = "https://github.com/nyantec/rust-journald", rev = "81ba0b72b563406ce939f1f00b6467aa77cf1f6b" }
+journald = { git = "https://github.com/nyantec/rust-journald", rev = "192fd851e79d8172c90ae21b2dceb51a08f1cfce" }
