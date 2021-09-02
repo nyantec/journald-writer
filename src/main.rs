@@ -78,6 +78,8 @@ fn main_err() -> Result<()> {
 
 	let config_str = fs::read_to_string(&config_path).context("Reading config file")?;
 	let config: Config = serde_yaml::from_str(&config_str).context("Parsing config file")?;
+	
+	info!("using configuration: {:?}", config);
 
 	info!(
 		"writing logs to {}, with cursor: {}",
