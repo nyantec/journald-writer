@@ -18,5 +18,5 @@ serde_yaml = "0.8"
 serde = { version = "1.0", features = [ "derive" ] }
 getopts = "0.2"
 
-log-writer = { version = "0.3", features = [ "serde" ] }
+log-writer = { version = "0.5", features = [ "serde" ] }
 journald = { git = "https://github.com/nyantec/rust-journald", rev = "192fd851e79d8172c90ae21b2dceb51a08f1cfce" }
