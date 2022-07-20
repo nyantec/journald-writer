@@ -144,7 +144,7 @@ fn find_cursor<P: AsRef<Path>>(path: P, mut reader: JournalReader) -> Result<Jou
 	if !path.as_ref().exists() {
 		debug!("no cursor file, seeking to tail");
 		reader
-			.seek(JournalSeek::Tail)
+			.seek(JournalSeek::ThisBoot)
 			.context("Seeking to journald tail")?;
 		reader
 			.previous_entry()

@@ -143,8 +143,7 @@ dependencies = [
 [[package]]
 name = "journald"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9bd164b32521e2c5977224192a85b3351d94354c7de8acca9045031354a15765"
+source = "git+https://github.com/nyantec/rust-journald.git?branch=seek-since-boot#f98f977be09c67cd0dba7bcf98d46ae9f36993cc"
 dependencies = [
  "cstr-argument",
  "libc",
