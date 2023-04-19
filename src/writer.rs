@@ -12,6 +12,7 @@ pub(crate) fn write_log_line<W: Write, P: AsRef<Path>>(
 	log: JournalEntry,
 	writer: &mut W,
 	cursor_path: P,
+	cursor_update: bool
 ) -> Result<()> {
 	let time = log
 		.get_reception_wallclock_time()
@@ -49,11 +50,12 @@ pub(crate) fn write_log_line<W: Write, P: AsRef<Path>>(
 
 	writer.flush().context("Flushing writer")?;
 
-	if let Some(cursor) = log.get_field("__CURSOR") {
-		write_cursor(cursor, cursor_path)?;
-	} else {
-		log::warn!("No cursor found");
+	if (cursor_update) {
+		if let Some(cursor) = log.get_field("__CURSOR") {
+			write_cursor(cursor, cursor_path)?;
+		}
 	}
+
 	//write_cursor()
 
 	Ok(())

@@ -106,12 +106,19 @@ pub fn run(config: Config) -> Result<()> {
 	let mut reader = open_reader(&config.cursor_file)?;
 	let mut iter = reader.as_blocking_iter();
 
+	let mut cursor_update_last = std::time::Instant::now();
+
 	// This iter is blocking. There as this is blocking for loop.
 	// This can mean that an exit request takes until the next log line is read
 	for entry in &mut iter {
+		let cursor_update = cursor_update_last.elapsed().as_secs() > 30;
+		if cursor_update {
+			cursor_update_last = std::time::Instant::now();
+		}
+
 		let entry = entry.context("iterate over Journal entries")?;
 		trace!("found entry: {:?}", entry);
-		writer::write_log_line(entry, &mut log_writer, &config.cursor_file)?;
+		writer::write_log_line(entry, &mut log_writer, &config.cursor_file, cursor_update)?;
 
 		if EXIT_FLAG.load(Ordering::Relaxed) {
 			info!("obeying exit flag");
